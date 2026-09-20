@@ -13,12 +13,9 @@ workflows:
           flutter pub get
       - name: Install CocoaPods dependencies
         script: |
-          cd ios
-          pod install --repo-update
+          cd ios && pod install
       - name: Build iOS app (.ipa)
         script: |
           flutter build ipa --release --no-codesign
     artifacts:
       - build/ios/ipa/*.ipa
-      - /tmp/xcodebuild_logs/*.log
-      - Flutter/build/ios/archive/Runner.xcarchive
